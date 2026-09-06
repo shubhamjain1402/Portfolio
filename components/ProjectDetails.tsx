@@ -1,53 +1,6 @@
 'use client';
-import { ArrowUpRight } from 'lucide-react';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { portfolio, type Project } from '@/data/portfolio';
+import {ArrowUpRight} from 'lucide-react';
+import {Dialog,DialogTrigger,DialogContent,DialogTitle,DialogDescription} from '@/components/ui/dialog';
+import {portfolio,type Project} from '@/data/portfolio';
 import ArrowLink from './ArrowLink';
-export default function ProjectDetails({ project }: { project: Project }) {
-  return (
-    <Dialog>
-      <DialogTrigger
-        className="details-trigger arrow-link"
-        aria-label={`Open details for ${project.name}`}
-      >
-        {portfolio.labels.details}
-        <ArrowUpRight size={17} />
-      </DialogTrigger>
-      <DialogContent className="project-dialog">
-        <p className="eyebrow">{project.role}</p>
-        <DialogTitle className="dialog-title">{project.name}</DialogTitle>
-        <DialogDescription className="dialog-description">
-          {project.description}
-        </DialogDescription>
-        <p>{project.impact}</p>
-        <div className="tags">
-          {project.features.map((feature) => (
-            <span key={feature}>{feature}</span>
-          ))}
-        </div>
-        <p className="eyebrow">{portfolio.labels.techStack}</p>
-        <div className="tags">
-          {project.stack.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-        <div className="project-links">
-          {project.live && (
-            <ArrowLink href={project.live}>{portfolio.labels.live}</ArrowLink>
-          )}
-          {project.github && (
-            <ArrowLink href={project.github}>
-              {portfolio.labels.github}
-            </ArrowLink>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-}
+export default function ProjectDetails({project}:{project:Project}){return <Dialog><DialogTrigger className="details-trigger arrow-link" aria-label={`Open details for ${project.name}`}>{portfolio.labels.details}<ArrowUpRight size={17}/></DialogTrigger><DialogContent className="project-dialog"><p className="eyebrow">{project.role}</p><DialogTitle className="dialog-title">{project.name}</DialogTitle><DialogDescription className="dialog-description">{project.description}</DialogDescription><p>{project.impact}</p><div className="tags">{project.features.map(feature=><span key={feature}>{feature}</span>)}</div><p className="eyebrow">{portfolio.labels.techStack}</p><div className="tags">{project.stack.map(item=><span key={item}>{item}</span>)}</div><div className="project-links">{project.live&&<ArrowLink href={project.live}>{portfolio.labels.live}</ArrowLink>}{project.github&&<ArrowLink href={project.github}>{portfolio.labels.github}</ArrowLink>}</div></DialogContent></Dialog>}
